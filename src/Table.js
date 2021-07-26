@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import Select from 'react-select';
 const options = [
-    { value: '2', label: '2' },
-    { value: '4', label: '4' },
-    { value: '6', label: '6' },
+    { value: 2, label: '2' },
+    { value: 4, label: '4' },
+    { value: 6, label: '6' },
 ];
 
 class Table extends Component {
@@ -22,36 +22,39 @@ class Table extends Component {
                 { ProductID: 8, ProductName: 'Item 8', ProductPrice: 108 },
                 { ProductID: 9, ProductName: 'Item 9', ProductPrice: 109 }
             ],
-            selectedOption: null,
+            selectedOption: options[0],
         }
 
     }
     renderTableData() {
-        return this.state.listData.map((data, index) => {
+        const { listData, selectedOption } = this.state;
+        console.log('selectedOption:', selectedOption);
+        return listData.map((data, index) => {
+            console.log('Index:', index);
             const { ProductID, ProductName, ProductPrice } = data //destructuring
-            return (
-                <tr key={ProductID}>
-                    <td>{ProductID}</td>
-                    <td>{ProductName}</td>
-                    <td>{ProductPrice}</td>
-                </tr>
-            )
+            if (index < selectedOption.value) {
+                return (
+                    <tr key={ProductID}>
+                        <td>{ProductID}</td>
+                        <td>{ProductName}</td>
+                        <td>{ProductPrice}</td>
+                    </tr>
+                )
+            }
         })
     }
     renderTableHeader() {
-        console.log("  thong ", Object.keys(this.state.listData[1]))
-        let header = Object.keys(this.state.listData[0])
+        // let header = Object.keys(this.state.listData[0])
+        const header = Object.keys(this.state.listData[0])
         return header.map((key, index) => {
             return <th key={index}>{key}</th>
         })
     }
     handleChange = selectedOption => {
-        // console.log("chon ",selectedOption)
         this.setState({ selectedOption });
-        // console.log(`Option selected:`, selectedOption);
     };
 
-    render() { 
+    render() {
         //Whenever our class runs, render method will be called automatically, it may have already defined in the constructor behind the scene.
         const { selectedOption } = this.state
         return (
@@ -63,13 +66,12 @@ class Table extends Component {
                         {this.renderTableData()}
                     </tbody>
                 </table>
-                <div style={{width:"5%" , margin:"auto" , marginTop:"20px" }}>
-                <Select
-                    // value={selectedOption}
-                    defaultValue={options[0]}
-                    onChange={this.handleChange}
-                    options={options}
-                />
+                <div style={{ width: "5%", margin: "auto", marginTop: "20px" }}>
+                    <Select
+                        value={selectedOption}
+                        onChange={this.handleChange}
+                        options={options}
+                    />
                 </div>
             </div>
         )
