@@ -7,8 +7,8 @@ class index extends Component {
         this.state = {
             currentValue: 0
         }
-
     }
+
 
     onClickButton1() {
         const { currentValue } = this.state;
