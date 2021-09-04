@@ -25,7 +25,7 @@ class index extends Component {
     render() {
         const { index } = this.state;
         return <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }} >
-            <div style={{ width: 300, height: 300, borderWidth: 1, borderColor: '#cacaca', backgroundColor: '#cacaca' }}>
+            <div style={{ width: 500, height: 500, borderWidth: 1, borderColor: '#cacaca', backgroundColor: '#cacaca' }}>
                 <button onClick={() => this.setState({ index: index + 1 })}>Click</button>
                 <div>Index {index}</div>
                 <div>---------------------</div>
