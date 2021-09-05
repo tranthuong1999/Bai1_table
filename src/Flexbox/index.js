@@ -1,5 +1,23 @@
 
 
+const ArithMeticComponent = (props) => {
+    // meaning -> tên phải ý nghĩa
+    const { title, onClick, isLastItem } = props;
+    // if (isLastItem) {
+    //     return <div
+    //         className="canculator_bottom_right_item canculator_bottom_right_item_last"
+    //         onClick={() => onClick && onClick()}
+    //     >=</div>
+    // }
+    // return <div
+    //     className="canculator_bottom_right_item"
+    //     onClick={() => onClick && onClick()} // =-> nếu onClick tồn tại thì mới gọi hàm
+    // >{title}</div>;
+    return <div
+        className={isLastItem ? 'canculator_bottom_right_item canculator_bottom_right_item_last' : 'canculator_bottom_right_item'}
+        onClick={() => onClick && onClick()} // =-> nếu onClick tồn tại thì mới gọi hàm
+    >{title}</div>;
+}
 const index = (props) => {
     return <div style={{ with: 500, height: 300, backgroundColor: '#f08361', paddingTop: 20, display: 'flex', justifyContent: 'center' }}>
 
@@ -36,11 +54,16 @@ const index = (props) => {
                     </div>
                 </div>
                 <div className="canculator_bottom_right">
-                    <div className="canculator_bottom_right_item">/</div>
-                    <div className="canculator_bottom_right_item">x</div>
-                    <div className="canculator_bottom_right_item">-</div>
-                    <div className="canculator_bottom_right_item">+</div>
-                    <div className="canculator_bottom_right_item canculator_bottom_right_item_last">=</div>
+                    <ArithMeticComponent title='/' onClick={() => console.log('Print /')} />
+                    <ArithMeticComponent title='x' onClick={() => console.log('Print X')} />
+                    <ArithMeticComponent title='-' onClick={() => console.log('Print -')} />
+                    <ArithMeticComponent title='+' onClick={() => console.log('Print +')} />
+                    <ArithMeticComponent
+                        title='>='
+                        onClick={() => console.log('Print >=')}
+                        isLastItem
+                    // isLastItem={true}
+                    />
                 </div>
             </div>
         </div>

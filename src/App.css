@@ -82,6 +82,7 @@
   border-bottom: 1px solid #f29a6c;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 .canculator_bottom_right_item_last{
   background-color: #f18d6c;
