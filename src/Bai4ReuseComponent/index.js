@@ -44,6 +44,7 @@ class index extends Component {
             name,
             country,
         }
+        this.setState({ student })
         console.log('Handle save student:', (student));
         console.log('Handle save student:', JSON.stringify(student));
         localStorage.setItem('Student', JSON.stringify(student))
@@ -74,6 +75,12 @@ class index extends Component {
                     <button onClick={() => this.handleSave()}>Save</button>
                 </div>
                 <h4>Student Name: {student?.name}</h4>
+
+                <h3>List Student</h3>
+                <h5>Student Name: Thuong - Country: Nam Hung</h5>
+                <h5>Student Name: Thuong - Country: Nam Hung</h5>
+                <h5>Student Name: Thuong - Country: Nam Hung</h5>
+                <h5>Student Name: Thuong - Country: Nam Hung</h5>
             </div>
         </div>
     }
