@@ -1,23 +1,6 @@
+import ArithMeticComponent from './ArithMeticComponent';
 
 
-const ArithMeticComponent = (props) => {
-    // meaning -> tên phải ý nghĩa
-    const { title, onClick, isLastItem } = props;
-    // if (isLastItem) {
-    //     return <div
-    //         className="canculator_bottom_right_item canculator_bottom_right_item_last"
-    //         onClick={() => onClick && onClick()}
-    //     >=</div>
-    // }
-    // return <div
-    //     className="canculator_bottom_right_item"
-    //     onClick={() => onClick && onClick()} // =-> nếu onClick tồn tại thì mới gọi hàm
-    // >{title}</div>;
-    return <div
-        className={isLastItem ? 'canculator_bottom_right_item canculator_bottom_right_item_last' : 'canculator_bottom_right_item'}
-        onClick={() => onClick && onClick()} // =-> nếu onClick tồn tại thì mới gọi hàm
-    >{title}</div>;
-}
 const index = (props) => {
     return <div style={{ with: 500, height: 300, backgroundColor: '#f08361', paddingTop: 20, display: 'flex', justifyContent: 'center' }}>
 
