@@ -1,7 +1,25 @@
+import { useState, useEffect } from 'react';
 import ArithMeticComponent from './ArithMeticComponent';
 
 
-const index = (props) => {
+
+
+const Flexbox = (props) => {
+    const [isClickLastItem, setIsClickLastItem] = useState(false);
+
+    const handleClickLastItem = () => {
+        console.log('handleClickLastItem');
+        setIsClickLastItem(true);
+        localStorage.setItem('IsClickLastItem', true)
+    }
+
+    // = component didmount, unmount, willmount
+    useEffect(() => {
+        const isClickLastItemLocal = localStorage.getItem('IsClickLastItem');
+        console.log('useEffect isClickLastItemLocal:', isClickLastItemLocal);
+        setIsClickLastItem(isClickLastItemLocal);
+    }, [isClickLastItem])
+
     return <div style={{ with: 500, height: 300, backgroundColor: '#f08361', paddingTop: 20, display: 'flex', justifyContent: 'center' }}>
 
         <div className="canculator">
@@ -43,14 +61,18 @@ const index = (props) => {
                     <ArithMeticComponent title='+' onClick={() => console.log('Print +')} />
                     <ArithMeticComponent
                         title='>='
-                        onClick={() => console.log('Print >=')}
+                        onClick={handleClickLastItem}
                         isLastItem
                     // isLastItem={true}
                     />
                 </div>
             </div>
         </div>
+        <div>
+            {/* <h6>{(isClickLastItemLocal || isClickLastItem) ? 'Clicked' : 'Not Click'}</h6> */}
+            <h6>{(isClickLastItem) ? 'Clicked' : 'Not Click'}</h6>
+        </div>
     </div>
 }
 
-export default index;
+export default Flexbox;
